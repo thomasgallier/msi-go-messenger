@@ -19,7 +19,10 @@ type Message struct {
 	Date string `json:"date"`
 }
 
-var rooms = map[int]*Room{1: {ID: 1, Name: "Charlie' Room", Messages: []Message{}}}
+var rooms = map[int]*Room {
+	1: {ID: 1, Name: "Charlie", Messages: []Message{}},
+	2: {ID: 2, Name: "GuiGui", Messages: []Message{}},
+}
 
 func error(c *gin.Context) {
 	c.HTML(http.StatusOK, "error.tmpl", gin.H{})
@@ -32,10 +35,16 @@ func getRoomById(id int) *Room {
 }
 
 func homeView(c *gin.Context, room *Room) {
-	c.HTML(http.StatusOK, "index.tmpl", gin.H{
+	c.HTML(http.StatusOK, "room.tmpl", gin.H{
 		"Room": room,
 		"Messages": room.Messages,
 		"OnAddMessage" : addMessage,
+	})
+}
+
+func indexView(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.tmpl", gin.H{
+		"Rooms": rooms,
 	})
 }
 
@@ -75,6 +84,8 @@ func main() {
 
 	router.GET("/room/:room", home)
 	router.POST("/room/:room", addMessage)
+
+	router.GET("/", indexView)
 
 	router.GET(":12345", error)
 

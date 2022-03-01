@@ -8,18 +8,11 @@
         <script type="text/javascript" src="/static/index.js"></script>
     </head>
     <body>
-        <h1>Liste des messages du salon {{.Room.Name}}</h1>
-        <div class="Messages" id="messages">
-            {{range .Messages}}
-                <div>
-                    <p>{{.Text}}</p>
-                    <p>{{.Date}}</p>
-                </div>
+        <h1>Liste des salons</h1>
+        <div class="Room" id="rooms">
+            {{range .Rooms}}
+                <a href="./room/{{.ID}}">{{.Name}}</a>
             {{end}}
-        </div>
-        <form method="POST" action="/room/{{.Room.ID}}" class="Input" name="form">
-            <input type="text" name="text" placeholder="Entrer un message" id="input" />
-            <button type="submit">Envoyer</button>
         </div>
     </body>
 </html>

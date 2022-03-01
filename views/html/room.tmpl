@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Messagerie GO</title>
+        <link rel="stylesheet" href="/static/index.css">
+        <script type="text/javascript" src="/static/index.js"></script>
+    </head>
+    <body>
+        <a href="../">Retour</a>
+        <h1>Liste des messages du salon {{.Room.Name}}</h1>
+        <div class="Messages" id="messages">
+            {{range .Messages}}
+                <div>
+                    <p>{{.Text}}</p>
+                    <p>{{.Date}}</p>
+                </div>
+            {{end}}
+        </div>
+        <form method="POST" action="/room/{{.Room.ID}}" class="Input" name="form">
+            <input type="text" name="text" placeholder="Entrer un message" id="input" />
+            <button type="submit">Envoyer</button>
+        </div>
+    </body>
+</html>
