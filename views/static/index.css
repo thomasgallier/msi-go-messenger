@@ -1,0 +1,33 @@
+.Messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-bottom: 2px solid black;
+    height: 80vh;
+    column-gap: 2px;
+    overflow-y: scroll;
+    padding-bottom: 4px;
+}
+
+.Messages div:last-child {
+    opacity: 1;
+}
+
+.Messages p:last-child {
+    color: grey;
+}
+
+.Messages div {
+    background-color: antiquewhite;
+    display: flex;
+    padding: 0 8px;
+    border-radius: 4px;
+    justify-content: space-between;
+    margin-top: 4px;
+    opacity: 0.5;
+}
+
+.Input {
+    margin-top: 8px;
+    display: inline-block;
+}
